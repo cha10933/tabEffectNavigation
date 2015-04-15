@@ -11,7 +11,7 @@
 		<WINDOW layout="0,0,720,1230" align="relative" defaultImg="#194b80">
 			<LABEL layout="0,0,720,200" text="MOVIE" fontSize="80" textColor="#ffffff" textShadow="#9E9E9E" textAlign="center" />
 			<STYLEBUTTON id="editBtn" layout="600,20,100,100" align="linear:center" shape="circle" defaultImg="#ffffff" onClick="function.editBtnCheck">
-				<IMAGE layout="80,80" defaultImg="res/extension.png" />
+				<IMAGE layout="80,80" defaultImg="/res/extension.png" />
 			</STYLEBUTTON>
 			<STYLEBUTTON id="tab3" layout="150,200,420,1230" align="relative" shape="roundRect(30)" defaultImg="{saveVariable.tab3Color ==''?'#00b9d2':saveVariable.tab3Color}" onFlickUp="function.aniCheck('tab3')"
 				onFlickDown="function.aniCheck('tab3')" onClick="function.aniClick(caller)">
