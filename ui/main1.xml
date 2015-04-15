@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MOML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.applusform.com/xsd/moml_ui.xsd" version="1.1.1">
+	<THEMES>
+		<THEME element="LABEL" fontFace="/fonts/OpenSans-Bold.ttf" />
+		<THEME element="STYLEBUTTON" fontFace="/fonts/OpenSans-Bold.ttf" />
+		<THEME element="BUTTON" fontFace="/fonts/OpenSans-Bold.ttf" />
+		<THEME element="EDIT" fontFace="/fonts/OpenSans-Bold.ttf" />
+	</THEMES>
+
+	<UILAYOUT portrait="720,1230" landscape="720,1230">
+		<WINDOW layout="0,0,720,1230" align="relative" defaultImg="#194b80">
+			<LABEL layout="0,0,720,200" text="MOVIE" fontSize="80" textColor="#ffffff" textShadow="#9E9E9E" textAlign="center" />
+			<STYLEBUTTON id="editBtn" layout="600,20,100,100" align="linear:center" shape="circle" defaultImg="#ffffff" onClick="function.editBtnCheck">
+				<IMAGE layout="80,80" defaultImg="res/extension.png" />
+			</STYLEBUTTON>
+			<STYLEBUTTON id="tab3" layout="150,200,420,1230" align="relative" shape="roundRect(30)" defaultImg="{saveVariable.tab3Color ==''?'#00b9d2':saveVariable.tab3Color}" onFlickUp="function.aniCheck('tab3')"
+				onFlickDown="function.aniCheck('tab3')" onClick="function.aniClick(caller)">
+				<LABEL id="tab3_title" layout="30,0,690,100" fontSize="30" textAlign="vCenter" textColor="#ffffff" text="{saveVariable.tab3TItle ==''?'LOTTE CINEMA':saveVariable.tab3TItle}" />
+				<STYLEBUTTON id="editBtn3" layout="340,10,70,50" align="linear:center" shape="roundRect(10)" defaultImg="#ffffff" visible="invisible"
+					onClick="function.editPopup(tab3_title.text,saveVariable.tab3Url,tab3.defaultImg,'tab3')">
+					<LABEL layout="70,50" fontSize="25" textAlign="center" textColor="#000000" text="EDIT" />
+				</STYLEBUTTON>
+			</STYLEBUTTON>
+			<STYLEBUTTON id="tab2" layout="100,300,520,1230" align="relative" shape="roundRect(30)" defaultImg="{saveVariable.tab2Color ==''?'#642d91':saveVariable.tab2Color}" onFlickUp="function.aniCheck('tab2')"
+				onFlickDown="function.aniCheck('tab2')" onClick="function.aniClick(caller)">
+				<LABEL id="tab2_title" layout="30,0,690,100" fontSize="30" textAlign="vCenter" textColor="#ffffff" text="{saveVariable.tab2TItle ==''?'MEGA BOX':saveVariable.tab2TItle}" />
+				<STYLEBUTTON id="editBtn2" layout="440,10,70,50" align="linear:center" shape="roundRect(10)" defaultImg="#ffffff" visible="invisible"
+					onClick="function.editPopup(tab2_title.text,saveVariable.tab2Url,tab2.defaultImg,'tab2')">
+					<LABEL layout="70,50" fontSize="25" textAlign="center" textColor="#000000" text="EDIT" />
+				</STYLEBUTTON>
+			</STYLEBUTTON>
+			<STYLEBUTTON id="tab1" layout="50,400,620,1230" align="relative" shape="roundRect(30)" defaultImg="{saveVariable.tab1Color ==''?'#fef8dc':saveVariable.tab1Color}" onFlickLeft="root.start_navigationContainer.selectedItem = 'main2'"
+				onFlickUp="function.aniCheck('tab1')" onFlickDown="function.aniCheck('tab1')" onClick="function.aniClick(caller)">
+				<LABEL id="tab1_title" layout="30,0,690,100" fontSize="30" textAlign="vCenter" textColor="#ffffff" text="{saveVariable.tab1TItle ==''?'CGV':saveVariable.tab1TItle}" />
+				<STYLEBUTTON id="editBtn1" layout="540,10,70,50" align="linear:center" shape="roundRect(10)" defaultImg="#ffffff" visible="invisible"
+					onClick="function.editPopup(tab1_title.text,saveVariable.tab1Url,tab1.defaultImg,'tab1')">
+					<LABEL layout="70,50" fontSize="25" textAlign="center" textColor="#000000" text="EDIT" />
+				</STYLEBUTTON>
+			</STYLEBUTTON>
+			<WINDOW id="webWindow" layout="0,800,720,1130" defaultImg="#ffffff" align="relative">
+				<AGATEWEBVIEW id="webView" layout="0,0,720,1130" controls="none" supportZoom="true" src="" jsBridge="false">
+					<LINKMAP>
+						<LINK url="*" onFinish="function.animationHide" />
+					</LINKMAP>
+				</AGATEWEBVIEW>
+				<WINDOW id="loading" layout="0,10,720,1120" defaultImg="#ffffff">
+					<LABEL id="loadingText" layout="0,0,720,1120" fontSize="50" fontStyle="bold" textAlign="center" textColor="#dddddd" textShadow="#003322" text="Loading..." multiLine="false" ellipsis="none"
+						minFontSize="-1" visible="invisible" />
+				</WINDOW>
+			</WINDOW>
+		</WINDOW>
+		<WINDOW id="editPopup" layout="0,0,720,1230" align="linear:center" defaultImg="#00000000" onClick="'none'" visible="invisible">
+			<STYLEBUTTON layout="500,700" align="linear:vertical" shape="roundRect(30)" defaultImg="#ffffff" pressedImg="#ffffff" borderStyle="solid:4|#afafaf">
+				<LABEL layout="500,150" fontSize="40" textAlign="center" textColor="#000000" text="EDIT" />
+				<WINDOW layout="440,100" align="linear:horizontal" margin="30,30,0,0">
+					<LABEL layout="150,70" fontSize="25" textAlign="vCenter" textColor="#000000" text="TITLE : " />
+					<EDIT id="title" layout="290,70" text="" returnKeyType="done" fontSize="25" textAlign="vCenter" textColor="#000000" />
+				</WINDOW>
+				<WINDOW layout="440,100" align="linear:horizontal" margin="30,30,0,0">
+					<LABEL layout="150,70" fontSize="25" textAlign="vCenter" textColor="#000000" text="URL : " />
+					<EDIT id="url" layout="290,70" text="" returnKeyType="done" fontSize="25" textAlign="vCenter" textColor="#000000" />
+				</WINDOW>
+				<WINDOW layout="440,100" align="linear:horizontal" margin="30,30,0,0">
+					<LABEL layout="150,70" fontSize="25" textAlign="vCenter" textColor="#000000" text="TAB COLOR : " />
+					<IMAGE id="color" layout="290,70" defaultImg="{saveVariable.tab1Color}" onClick="container.open('colorPopup.xml', 'root.color')" />
+				</WINDOW>
+				<WINDOW layout="500,70" align="linear:center">
+					<STYLEBUTTON layout="150,70" shape="roundRect(10)" text="저 장" fontSize="25" textAlign="vCenter" textColor="#000000" defaultImg="#ffffff" pressedImg="#ffffff" borderStyle="solid:4|#afafaf"
+						onClick="function.editOk(title.text,url.text,color.defaultImg)" />
+					<STYLEBUTTON layout="150,70" shape="roundRect(10)" text="취 소" fontSize="25" textAlign="vCenter" textColor="#000000" defaultImg="#ffffff" pressedImg="#ffffff" borderStyle="solid:4|#afafaf"
+						onClick="animation.flyOut('editPopup',  editPopup.width/2, editPopup.height/2, 0, 0, '', 500, '')" margin="20,0,0,0" />
+				</WINDOW>
+			</STYLEBUTTON>
+		</WINDOW>
+	</UILAYOUT>
+	<CMD cmd="userVariable.tabType = 'main1'" />
+	<CMD cmd="userVariable.tabClickStatus = 'true'" />
+	<CMD cmd="userVariable.aniStatus = 'false'" />
+	<CMD condition="saveVariable.tab1Url == ''" cmd="saveVariable.tab1TItle = 'CGV',saveVariable.tab1Url = 'http://www.cgv.co.kr',saveVariable.tab1Color = '#fef8dc'" />
+	<CMD condition="saveVariable.tab2Url == ''" cmd="saveVariable.tab2TItle = 'MEGA BOX',saveVariable.tab2Url = 'http://www.megabox.co.kr/',saveVariable.tab2Color = '#642d91'" />
+	<CMD condition="saveVariable.tab3Url == ''" cmd="saveVariable.tab3TItle = 'LOTTE CINEMA',saveVariable.tab3Url = 'http://www.lottecinema.co.kr/',saveVariable.tab3Color = '#00b9d2'" />
+
+	<FUNCTION id="editOk(title,url,color)">
+		<CMD condition="url and string.find(url, ':') lt 0" cmd="url='http://' + url" elseCmd="url=url" />
+		<CMD condition="userVariable.editType == 'tab1'" cmd="tab1_title.text = title, tab1.defaultImg = color, saveVariable.tab1TItle = title, saveVariable.tab1Url = url, saveVariable.tab1Color = color" />
+		<CMD condition="userVariable.editType == 'tab2'" cmd="tab2_title.text = title, tab2.defaultImg = color, saveVariable.tab2TItle = title, saveVariable.tab2Url = url, saveVariable.tab2Color = color" />
+		<CMD condition="userVariable.editType == 'tab3'" cmd="tab3_title.text = title, tab3.defaultImg = color, saveVariable.tab3TItle = title, saveVariable.tab3Url = url, saveVariable.tab3Color = color" />
+		<CMD cmd="animation.flyOut('editPopup',  editPopup.width/2, editPopup.height/2, 0, 0, '', 500, '')" />
+	</FUNCTION>
+
+	<FUNCTION id="editPopup(title,url,color,type)">
+		<CMD cmd="device.log('cgy', title + ':' + color + ':'+type)" />
+		<CMD cmd="userVariable.editType = type" />
+		<CMD cmd="title.text = title" />
+		<CMD condition="url and string.find(url, ':') lt 0" cmd="url.text='http://' + url" elseCmd="url.text=url" />
+		<CMD cmd="color.defaultImg = color" />
+		<CMD condition="editPopup.visible == 'invisible'" cmd="animation.flyIn('editPopup',  editPopup.width/2, editPopup.height/2, 0, 0, 'backOut', 500, '')" elseCmd="animation.flyOut('editPopup',  editPopup.width/2, editPopup.height/2, 0, 0, '', 500, '')" />
+	</FUNCTION>
+
+	<FUNCTION id="editBtnCheck">
+		<CMD condition="editBtn1.visible == 'invisible'" cmd="function.editBtnVisible" elseCmd="function.editBtnInVisible" />
+	</FUNCTION>
+
+	<FUNCTION id="editBtnVisible">
+		<CMD cmd="animation.flyIn('editBtn1', editBtn1.width/2, editBtn1.height/2,  0,0, 'backOut', 500, '')" />
+		<CMD cmd="animation.flyIn('editBtn2', editBtn2.width/2, editBtn2.height/2,  0,0, 'backOut', 500, '')" />
+		<CMD cmd="animation.flyIn('editBtn3', editBtn3.width/2, editBtn3.height/2,  0,0, 'backOut', 500, '')" />
+	</FUNCTION>
+
+	<FUNCTION id="editBtnInVisible">
+		<CMD cmd="animation.flyOut('editBtn1', editBtn1.width/2, editBtn1.height/2,  0,0, '', 100, '')" />
+		<CMD cmd="animation.flyOut('editBtn2', editBtn2.width/2, editBtn2.height/2,  0,0, '', 100, '')" />
+		<CMD cmd="animation.flyOut('editBtn3', editBtn3.width/2, editBtn3.height/2,  0,0, '', 100, '')" />
+	</FUNCTION>
+
+	<FUNCTION id="animationHide">
+		<CMD condition="userVariable.aniStatus == 'true'" cmd="animation.hide('loading', 'fade', '', 400,''),userVariable.aniStatus = 'false'" />
+	</FUNCTION>
+	<FUNCTION id="aniClick(id)">
+		<CMD condition="userVariable.tabClickStatus == 'true'" cmd="animation.flyIn(id, 0, -50, id.width,id.height, 'roundTrip|reverse', 500, '')" />
+	</FUNCTION>
+
+	<FUNCTION id="aniCheck(id)">
+		<CMD cmd="device.log('cgy', caller.top)" />
+		<CMD condition="caller.left != 0" cmd="function.aniUp(id)" elseCmd="function.aniDown(id)" />
+	</FUNCTION>
+
+	<FUNCTION id="aniUp(id)">
+		<CMD condition="editBtn1.visible == 'visible'" cmd="function.editBtnInVisible" />
+		<CMD cmd="userVariable.tabClickStatus = 'false'" />
+		<CMD cmd="userVariable.aniStatus = 'true'" />
+		<CMD cmd="animation.show('loadingText', 'fade', 'roundTrip20', 20000, '')" />
+		<CMD condition="id == 'tab1'">
+			<CMD cmd="animation.moveIn('tab1',  -50, -400, tab1.width+100, tab1.height, 'easeIn3', 500, '')" />
+			<CMD cmd="animation.moveIn('webWindow',  0, -700, webWindow.width, webWindow.height, 'easeIn3', 500, '')" />
+			<CMD cmd="webView.src = saveVariable.tab1Url" />
+		</CMD>
+		<CMD condition="id == 'tab2'">
+			<CMD cmd="animation.moveIn('tab1',  0, 500, tab1.width, tab1.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('tab2',  -100, -300, tab2.width+200, tab2.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('webWindow',  0, -700, webWindow.width, webWindow.height, '', 500, '')" />
+			<CMD cmd="webView.src = saveVariable.tab2Url" />
+		</CMD>
+		<CMD condition="id == 'tab3'">
+			<CMD cmd="animation.moveIn('tab1',  0, 500, tab1.width, tab1.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('tab2',  0, 500, tab2.width, tab2.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('tab3',  -150, -200, tab3.width+300, tab3.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('webWindow',  0, -700, webWindow.width, webWindow.height, '', 500, '')" />
+			<CMD cmd="webView.src = saveVariable.tab3Url" />
+		</CMD>
+	</FUNCTION>
+
+	<FUNCTION id="aniDown(id)">
+		<CMD cmd="userVariable.tabClickStatus = 'true'" />
+		<CMD cmd="userVariable.aniStatus = 'false'" />
+		<CMD cmd="loading.visible = 'visible'" />
+		<CMD cmd="animation.hide('loadingText', 'fade', '', 400,'')" />
+		<CMD cmd="webView.src = ''" />
+		<CMD condition="id == 'tab1'">
+			<CMD cmd="animation.moveIn('tab1',  50, 400, tab1.width-100, tab1.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('webWindow',  0, 700, webWindow.width, webWindow.height, '', 500, '')" />
+		</CMD>
+		<CMD condition="id == 'tab2'">
+			<CMD cmd="animation.moveIn('tab2',  100, 300, tab2.width-200, tab2.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('webWindow',  0, 700, webWindow.width, webWindow.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('tab1',  0, -500, tab1.width, tab1.height, '', 500, '')" />
+		</CMD>
+		<CMD condition="id == 'tab3'">
+			<CMD cmd="animation.moveIn('tab3',  150, 200, tab3.width-300, tab3.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('webWindow',  0, 700, webWindow.width, webWindow.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('tab1',  0, -500, tab1.width, tab1.height, '', 500, '')" />
+			<CMD cmd="animation.moveIn('tab2',  0, -500, tab2.width, tab2.height, '', 500, '')" />
+		</CMD>
+	</FUNCTION>
+</MOML>
+

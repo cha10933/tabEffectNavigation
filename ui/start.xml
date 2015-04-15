@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MOML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.applusform.com/xsd/moml_ui.xsd" version="1.1.1">
+	<UILAYOUT portrait="720,1230" landscape="720,1230">
+		<WINDOW layout="0,0,720,1230" align="relative" defaultImg="#194b80">
+			<NAVIGATIONCONTAINER id="start_navigationContainer" layout="0,0,720,1230" selectedItem="main1" defaultImg="#194b80">
+				<VIEWITEM id="main1" src="main1.xml" transitionInEffect="move:right|duration=500" transitionOutEffect="move:left|duration=500" cacheMode="always" />
+				<VIEWITEM id="main2" src="main2.xml" transitionInEffect="move:left|duration=500" transitionOutEffect="move:right|duration=500" cacheMode="always" />
+			</NAVIGATIONCONTAINER>
+		</WINDOW>
+	</UILAYOUT>
+</MOML>
